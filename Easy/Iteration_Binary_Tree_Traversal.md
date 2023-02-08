@@ -5,12 +5,12 @@ Description of the three orders [wikipedia].
 
 Iteration to Binary Tree is using Stack to traverse Binary Tree, Detial watch diagram:  
 
-1. Inorder is `Left -> Current -> Right`, Because Left is first. So we need two steps:
+1. Inorder is `Left -> Middle -> Right`, Because Left is first. So we need two steps:
     1. Traversal Node and add Node to stack first, until point reach the bottom.
     2. Then process the stack.
-2. Preorder is `Current -> Left -> Right`, so push in stack order is Right -> Left, because stack is first in last out.
-3. Postorder is `Left -> Right -> Current`, We can chang Preoredr stack order `Current -> Left -> Right` to `Current -> Right -> Left`,
-then reverse result is `Left -> Right -> Current` is answer.
+2. Preorder is `Middle -> Left -> Right`, so push in stack order is Right -> Left, because stack is first in last out.
+3. Postorder is `Left -> Right -> Middle`, We can chang Preoredr stack order `Middle -> Left -> Right` to `Middle -> Right -> Left`,
+then reverse result is `Left -> Right -> Middle` is answer.
 
 Leetcode Problem:  
 Golang Node struct
