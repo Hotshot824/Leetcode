@@ -278,6 +278,22 @@ func Recursion(cur *TreeNode, depth int) int {
 	return int(math.Max(float64(Recursion(cur.Left, depth+1)), float64(Recursion(cur.Right, depth+1))))
 }
 ```
+Bottom up solution, find leaf node and return 1, and +1 for each passed node after that, until it returns to the root.
+```go
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	return max(maxDepth(root.Left), maxDepth(root.Right)) +1 
+}
+
+func max(i, j int) int {
+	if i > j {
+		return i
+	}
+	return j
+}
+```
 [111. Minimum Depth of Binary Tree]
 Compare all leaf Node, get min depth to the answer.
 ```go
