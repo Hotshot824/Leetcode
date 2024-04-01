@@ -22,3 +22,26 @@ func maximumOddBinaryNumber(s string) string {
     return ret
 }
 ```
+
+[2864. Maximum Odd Binary Number]: https://leetcode.com/problems/maximum-odd-binary-number/
+
+### [58. Length of Last Word]
+
+直接從後面找到第一個不是空白的字元，然後開始計算長度，直到遇到空白字元或是字串結束。
+
+```go 
+func lengthOfLastWord(s string) int {
+    count := 0
+    for i := len(s)-1; i >= 0; i-- {
+        if s[i] != ' ' {
+            count++
+        }
+        if s[i] == ' ' && count != 0 {
+            return count
+        }
+    }
+    return count
+}
+```
+
+[58. Length of Last Word]: https://leetcode.com/problems/length-of-last-word/
