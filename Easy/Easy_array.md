@@ -7,6 +7,7 @@
 
 最大的 Odd Binary 一定是以 1 結尾，所以保留一個 1 剩下的 1 全部排到前面，後面補 0 即可。
 
+**Solution:**
 ```go
 func maximumOddBinaryNumber(s string) string {
     ret := ""
@@ -96,3 +97,37 @@ func merge(nums1 []int, m int, nums2 []int, n int)  {
 ```
 
 [88. Merge Sorted Array]: https://leetcode.com/problems/merge-sorted-array/
+
+---
+
+### [551. Student Attendance Record I]
+
+很簡單的題目，只要檢查 A 的數量和 L 的數量即可，如果 A >= 2 或是 L >= 3 就回傳 false，
+因為 L 是連續的，所以不是 L 的話就把 L 歸零。
+
+**Solution:**
+```go
+func checkRecord(s string) bool {
+    A, L := 0, 0
+	for _, r := range s {
+        switch r {
+            case 'L':
+                L++
+                if L >= 3 {
+                    return false
+                }
+            case 'A':
+                A++
+                if A >= 2 {
+                    return false
+                }
+                fallthrough
+            default:
+                L = 0
+        }
+	}
+	return true
+}
+```
+
+[551. Student Attendance Record I]: https://leetcode.com/problems/student-attendance-record-i/
