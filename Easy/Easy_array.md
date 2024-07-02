@@ -131,3 +131,51 @@ func checkRecord(s string) bool {
 ```
 
 [551. Student Attendance Record I]: https://leetcode.com/problems/student-attendance-record-i/
+
+---
+
+### [1550. Three Consecutive Odds]
+
+在一個 Array 中尋找連續的三個奇數，如果有就回傳 true，否則回傳 false。
+-   這題蠻簡單的，所以一開始就寫了下面的解法
+
+Time Complexity O(n).
+
+**Solution:**
+```go
+func threeConsecutiveOdds(arr []int) bool {
+	count := 0
+	for _, n := range arr {
+		if n%2 > 0 {
+			count++
+		} else if count < 3 {
+            count = 0
+        } else {
+            return true
+        }
+	}
+
+    if count >= 3 {
+        return true
+    }
+    return false
+}
+```
+
+本來想寫 Unrolling 來加速，但是在這裡其實沒有太大的差別，因為要檢查的是 Consecutive odds，
+所以 i 不是 3 個一組的話反而每個 i 要處理更多的指令，所以沒有太大的差別。
+
+**Solution 2:**
+```go
+func threeConsecutiveOdds(arr []int) bool {
+    size := len(arr)
+    for i := 2; i < size; i++ {
+        if arr[i]%2 != 0 && arr[i-1]%2 != 0 && arr[i-2]%2 != 0 {
+            return true
+        }
+    }
+    return false
+}
+```
+
+[1550. Three Consecutive Odds]: https://leetcode.com/problems/three-consecutive-odds/
