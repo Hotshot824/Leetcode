@@ -1,4 +1,4 @@
-### [N-ary Tree Traversal]
+### N-ary Tree Traversal
 
 Reference [Recursion Binary Tree Traversal] and [Iteration Binary Tree Traversal].  
 Using Recursion and Iteration to solution.
