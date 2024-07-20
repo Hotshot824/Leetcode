@@ -2,13 +2,45 @@
 
 大部分的 Martix 都是用 array 來表示的，處理的時候要注意觀察 Martix 的變化跟 Array 的特性。
 
-### [48. Rotate Image]
+---
 
-這題特殊的地方在於不能使用額外的空間，所以只能在原本的 Martix 上面做操作，所以一定會有一個 temp 變數來暫存值。
+### [1380. Lucky Numbers in a Matrix]
 
-所以先觀察 index 的變化，以 3x3 的 Martix 為例：
+因為這題中的每個數字都是 Unique，所以不會有重複的數字。
+先找出每個 Row 的最小值，再找出每個 Column 的最大值，最後找出 Row 和 Column 的交集即可。
 
-![](https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg)
+Time complexity O(n<sup>2</sup>), Space complexity O(n).
 
+**Solution**
+```go
+func luckyNumbers(matrix [][]int) []int {
+    minRow := make([]int, len(matrix))
+    for i := range minRow {
+        minRow[i] = int(^uint(0) >> 1)
+    }
+    maxCol := make([]int, len(matrix[0]))
 
-[48. Rotate Image]: https://leetcode.com/problems/rotate-image/
+    for i := range matrix {
+        for j := range matrix[i] {
+            if matrix[i][j] < minRow[i] {
+                minRow[i] = matrix[i][j]
+            }
+            if matrix[i][j] > maxCol[j] {
+                maxCol[j] = matrix[i][j]
+            }
+        }
+    }
+
+    var res []int
+    for _, row := range minRow {
+        for _, col := range maxCol {
+            if row == col {
+                res = append(res, row)
+            }
+        }
+    }
+    return res
+}
+```
+
+[1380. Lucky Numbers in a Matrix]: https://leetcode.com/problems/lucky-numbers-in-a-matrix/
