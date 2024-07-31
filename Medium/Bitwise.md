@@ -5,6 +5,7 @@
 2.  所以直接 AND `n-1` 必然會得到 0
 3.  這裡要注意的是 0 不是 2 的次方數，所以要特別處理
 
+**Solution:**
 ```go
 func isPowerOfTwo(n int) bool {
 	if n == 0 {
@@ -30,7 +31,7 @@ func isPowerOfTwo(n int) bool {
 -	如果一個數字是 even，那麼它的 bit 數量會等於 nums[i/2]
 -	如果一個數字是 odd，那麼它的 bit 數量會等於前一個偶數的 bit 數量加一
 
-Solution:
+**Solution:**
 ```go
 func countBits(n int) []int {
 	result := make([]int, n+1)
@@ -59,7 +60,7 @@ func countBits(n int) []int {
 
 Time Complexity: O(n)
 
-Solution:
+**Solution:**
 ```go
 func missingNumber(nums []int) int {
 	var xor, i int = 0, 0
@@ -72,7 +73,7 @@ func missingNumber(nums []int) int {
 
 這邊也可以利用數學方式，等差數列求和的方式來解決這個問題 1 ~ n 的和為 `n*(n+1)/2`，所以缺少的數字就是 `n*(n+1)/2 - sum`。
 
-Solution 2:
+**Solution 2:**
 ```go
 func missingNumber(nums []int) int {
 	var sum int
@@ -94,7 +95,7 @@ func missingNumber(nums []int) int {
 
 Time Complexity: O(n)
 
-Solution:
+**Solution:**
 ```go
 func singleNumber(nums []int) int {
     var xor int = 0
@@ -106,3 +107,34 @@ func singleNumber(nums []int) int {
 ```
 
 [136. Single Number]: https://leetcode.com/problems/single-number/
+
+---
+
+### [89. Gray Code]
+
+這邊要看下 Gray Code 的規則，對於 n = 2 的情況，`00, 01, 11, 10`，可以看到這個規則是對稱的，所以可以利用 XOR 的方式來解決這個問題。
+
+**Solution:**
+```go
+func grayCode(n int) []int {
+    res := []int{}
+    for i := 0; i < pow(2, n); i++ {
+        res = append(res, i^(i>>1))
+    }
+    return res
+}
+
+func pow(base, exponent int) int {
+    result := 1
+    for exponent != 0 {
+        if exponent%2 != 0 {
+            result *= base
+        }
+        base *= base
+        exponent /= 2
+    }
+    return result
+}
+```
+
+[89. Gray Code]: https://leetcode.com/problems/gray-code/
