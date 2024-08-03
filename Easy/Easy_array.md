@@ -179,3 +179,39 @@ func threeConsecutiveOdds(arr []int) bool {
 ```
 
 [1550. Three Consecutive Odds]: https://leetcode.com/problems/three-consecutive-odds/
+
+---
+
+### [1460. Make Two Arrays Equal by Reversing Subarrays]
+
+這題不要往複雜了想，如果一個 Array 跟另一個 Array 在 Sorting 後是相同的，那就絕對可以透過 Reverse Subarrays 來讓兩個 Array 相等。
+但是如果真的去做 Sorting 的話，Time Complexity 就會變成 O(nlogn)，所以這裡可以用一個簡單的方法來解這題。
+
+-   只要兩個 Array 的元素出現的次數是相同的，那就是可以透過 Reverse Subarrays 來讓兩個 Array 相等
+
+Time Complexity O(n), Space Complexity O(1).
+
+**Cpp Solution:**
+```cpp
+class Solution {
+public:
+    bool canBeEqual(std::vector<int>& target, std::vector<int>& arr) {
+        if (target.size() != arr.size()) {
+            return false;
+        }
+
+        std::array<int, 1001> targetCount = {0};
+        std::array<int, 1001> arrCount = {0};
+
+        for (int num : target) 
+            targetCount[num]++;
+
+        for (int num : arr) 
+            arrCount[num]++;
+
+        return targetCount == arrCount;
+    }
+};
+```
+
+[1460. Make Two Arrays Equal by Reversing Subarrays]: https://leetcode.com/problems/make-two-arrays-equal-by-reversing-sub-arrays/
