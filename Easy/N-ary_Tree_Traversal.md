@@ -3,8 +3,15 @@
 Reference [Recursion Binary Tree Traversal] and [Iteration Binary Tree Traversal].  
 Using Recursion and Iteration to solution.
 
-[589. N-ary Tree Preorder Traversal]  
-Iteration
+### [589. N-ary Tree Preorder Traversal]  
+
+Preorder is `Middle -> Left -> Right`, So using this order add node in stack.
+1. Add root in stack
+2. Stack pop and join cur in result.
+3. Join child in stack from right to left
+4. Keep step 1~3 until stack is empty
+
+**Iteration:**
 ```go
 func preorder(root *Node) []int {
 	var result []int
@@ -23,7 +30,8 @@ func preorder(root *Node) []int {
 	return result
 }
 ```
-Recursion
+
+**Recursion**
 ```go
 func preorder(root *Node) []int {
 	var result []int
@@ -42,10 +50,16 @@ func order(cur *Node, result *[]int) {
 }
 ```
 
-[590. N-ary Tree Postorder Traversal]  
-Preorder is `Middle -> Left -> Right`, Postorder is `Left -> Right -> Middle`, So change preorder operation to `Middle -> Right -> Left`,
+---
+
+### [590. N-ary Tree Postorder Traversal]  
+
+**Reverse Preorder Answer**
+Preorder is `Middle -> Left -> Right`, Postorder is `Left -> Right -> Middle`, 
+So change preorder operation to `Middle -> Right -> Left`,
 then reverse when get Postorder answer.  
-Iteration
+
+**Iteration**
 ```go
 func postorder(root *Node) []int {
 	var result []int
@@ -69,7 +83,8 @@ func reverse(arr *[]int) {
 	}
 }
 ```
-Recursion
+
+**Recursion**
 ```go
 func postorder(root *Node) []int {
 	var result []int
@@ -95,6 +110,38 @@ func reverse(arr *[]int) {
 }
 ```
 
+**Postorder**
+
+Using postorder to traversal tree: 
+1. Traversal child order is from left to right 
+2. If all child traversed join cur in result
+
+**Recursion:**
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Children []*Node
+ * }
+ */
+
+func postorder(root *Node) []int {
+    var result []int
+    postorderTraversal(root, &result)
+    return result
+}
+
+func postorderTraversal(cur *Node, result *[]int) {
+    if cur == nil {
+        return
+    }
+    for _, child := range cur.Children {
+        postorderTraversal(child, result)
+    }
+    *result = append(*result, cur.Val)
+}
+```
 
 [589. N-ary Tree Preorder Traversal]: https://leetcode.com/problems/n-ary-tree-preorder-traversal/
 [590. N-ary Tree Postorder Traversal]: https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/
