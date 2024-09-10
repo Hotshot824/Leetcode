@@ -106,3 +106,45 @@ func restoreMatrix(rowSum []int, colSum []int) [][]int {
 
 [1605. Find Valid Matrix Given Row and Column Sums]: https://leetcode.com/problems/find-valid-matrix-given-row-and-column-sums/
 
+---
+
+### [48. Rotate Image]
+
+這題如果再不使用同個 Address 或者額外的 Space 的情況下，就需要計算出每次旋轉的交換位置。
+每次交換就一次交換完成，所以只需要交換 n/2 次即可。
+
+-   以下為例每一步就完成所有的交換，所以只需要交換 n/2 次即可
+```
+1 2 3    7 2 1
+4 5 6 -> 4 5 6
+7 8 9    9 8 3
+```
+
+Time Complexity O(n<sup>2</sup>), Space Complexity O(1).
+
+**Solution:**
+```go
+func rotate(matrix [][]int)  {
+    m, n := len(matrix), len(matrix[0])
+    top, bottom, left, right := 0, m-1, 0, n-1
+
+    for bottom > top {
+        for i := 0; i < right-left; i++ {
+            a := matrix[top][left+i]
+            b := matrix[top+i][right]
+            c := matrix[bottom][right-i]
+            d := matrix[bottom-i][left]
+            matrix[top][left+i] = d
+            matrix[top+i][right] = a
+            matrix[bottom][right-i] = b
+            matrix[bottom-i][left] = c
+        }
+        top++
+        bottom--
+        left++
+        right--
+    }
+}
+```
+
+[48. Rotate Image]: https://leetcode.com/problems/rotate-image/
