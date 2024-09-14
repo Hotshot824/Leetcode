@@ -138,3 +138,45 @@ func pow(base, exponent int) int {
 ```
 
 [89. Gray Code]: https://leetcode.com/problems/gray-code/
+
+---
+
+### [2419. Longest Subarray With Maximum Bitwise AND]
+
+這題雖然被分類在 Bit Manipulation，但是實際上是一個 sliding window 的問題，先釐清找到 Longest Subarray with Maximum Bitwise AND 的條件。
+實際上就是在這個 Array 中找到連續的最大值，如果不是最大值都將會因為 AND 的特性使得結果變小。
+
+這樣我們就能用 Two pointer 來解這題:
+1.	初始化變數
+	-	Res: 紀錄最大的 Subarray 長度
+	-	Maximum: 紀錄目前最大的數字
+2.	遍歷整個 Array 並使用 Left, Right 兩個 Pointer
+	-	Arr.Left > Maximum，更新 Maximum，並將 Left 設為 Right，Res 設為 1 代表找到一個 Subarray
+	-	Arr.Left = Maximum，更新 Res = max(Res, Right - Left + 1)
+	-	Arr.Left < Maximum，將 Left 設為 Right+1，代表重新開始找 Subarray
+
+Time Complexity O(n), Space Complexity O(1).
+
+**Solution:**
+```go
+func longestSubarray(nums []int) int {
+    res := 0
+    maximum := 0
+
+    left := 0
+    for right := range nums {
+        if nums[right] > maximum {
+            maximum = nums[right];
+            left = right;
+            res = 1;
+        } else if nums[right] == maximum {
+            res = max(res, right - left + 1)
+        } else {
+            left = right+1;
+        }
+    }
+    return res
+}
+```
+
+[2419. Longest Subarray With Maximum Bitwise AND]: https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and/
