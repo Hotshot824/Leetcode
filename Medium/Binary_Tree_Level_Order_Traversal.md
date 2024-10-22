@@ -2,11 +2,10 @@
 
 [Reference]  
 
-Level order is using queue to traversal each level element. Because queue is `first in first out`, 
-we can using this feature to design traverse function.  
-
-Leetcode Problem:  
-Golang Node struct
+Level order 的歷遍方式是逐層的遍歷，核心思想是使用 Queue 來實現，因為 Queue 是先進先出的特性，
+所以可以使用這個特性來設計遍歷函數。
+  
+**Golang TreeNode Struct**
 ```go
 /**
  * Definition for a binary tree node.
@@ -17,11 +16,16 @@ Golang Node struct
  * }
  */
 ```
-[102. Binary Tree Level Order Traversal]
-There are two main steps to pay attention to in coding:  
-1. Push current level Nodes child Node in queue.
-2. Pop all same level Nodes and add value in result.
-Iteration
+
+---
+
+### [102. Binary Tree Level Order Traversal]
+
+這裡有兩個主要的步驟需要注意：
+1. 將當前層的 Node 的 SubNode 加入到 Queue
+2. 將當前層的所有 Node Pop，並將值加入到 Res
+
+**Iteration Solution:**
 ```go
 func levelOrder(root *TreeNode) [][]int {
 	var result [][]int
@@ -49,7 +53,7 @@ func levelOrder(root *TreeNode) [][]int {
 }
 ```
 
-Recursion
+**Recursion Solution:**
 ```go
 func levelOrder(root *TreeNode) [][]int {
 	var result [][]int
@@ -69,8 +73,14 @@ func order(cur *TreeNode, result *[][]int, depth int) {
 	order(cur.Right, result, depth+1)
 }
 ```
-[107. Binary Tree Level Order Traversal II]  
-Do it in the same way as 102, and finally reverse the answer.
+
+---
+
+### [107. Binary Tree Level Order Traversal II]  
+
+跟上一題 102 一樣的做法，最後將答案反轉即可。
+
+**Iteration Solution:**
 ```go
 func levelOrderBottom(root *TreeNode) [][]int {
 	var result [][]int
@@ -107,8 +117,13 @@ func reserve(arr *[][]int) {
 }
 ```
 
-[199. Binary Tree Right Side View]  
-In level order find each level last Node add to result is the answer.
+---
+
+### [199. Binary Tree Right Side View]  
+
+在 level order 中找到每一層的最後一個 Node 加入到答案中即可。
+
+**Iteration Solution:**
 ```go
 func rightSideView(root *TreeNode) []int {
 	var result []int
@@ -135,8 +150,14 @@ func rightSideView(root *TreeNode) []int {
 	return result
 }
 ```
-[637. Average of Levels in Binary Tree]  
-Add same level value to a variable, then division to the level node count (size).
+
+---
+
+### [637. Average of Levels in Binary Tree]  
+
+加入同一層的值到一個變數中，然後除以該層的 Node 數量（size）。
+
+**Iteration Solution:**
 ```go
 func averageOfLevels(root *TreeNode) []float64 {
 	var result []float64
@@ -164,8 +185,14 @@ func averageOfLevels(root *TreeNode) []float64 {
 	return result
 }
 ```
-[429. N-ary Tree Level Order Traversal]  
-Change problem 102. push children Node in queue method, is N-ary Tree solution.
+
+---
+
+### [429. N-ary Tree Level Order Traversal]  
+
+改變 102 題的加入子 Node 到 Queue 的方法，就是 N-ary Tree 的解法。
+
+**Iteration Solution:**
 ```go
 /**
  * Definition for a Node.
@@ -197,8 +224,14 @@ func levelOrder(root *Node) [][]int {
 	return result
 }
 ```
-[515. Find Largest Value in Each Tree Row]  
-Level order, get each level max value.
+
+---
+
+### [515. Find Largest Value in Each Tree Row]  
+
+Level order, 拿到每一層的最大值。
+
+**Iteration Solution:**
 ```go
 func largestValues(root *TreeNode) []int {
 	var result []int
@@ -226,9 +259,13 @@ func largestValues(root *TreeNode) []int {
 	return result
 }
 ```
-[116. Populating Next Right Pointers in Each Node]  
-[117. Populating Next Right Pointers in Each Node II]  
-Using level order, if Node is not the last element, Next is the next element of the queue.
+
+### [116. Populating Next Right Pointers in Each Node]  
+### [117. Populating Next Right Pointers in Each Node II]  
+
+使用 level order 的方式，如果 Node 不是最後一個元素，Next 就是 Queue 的下一個元素。
+
+**Iteration Solution:**
 ```go
 /**
  * Definition for a Node.
@@ -264,8 +301,12 @@ func connect(root *Node) *Node {
 	return root
 }
 ```
-[104. Maximum Depth of Binary Tree]  
-The following uses recursion, which is actually the same logic as level order.  
+
+### [104. Maximum Depth of Binary Tree]  
+
+下面的解法使用遞迴，其實跟 level order 的邏輯是一樣的。
+
+**Recursion Solution:**
 ```go
 func maxDepth(root *TreeNode) int {
 	return Recursion(root, 0)
@@ -294,8 +335,12 @@ func max(i, j int) int {
 	return j
 }
 ```
-[111. Minimum Depth of Binary Tree]  
-Compare all leaf Node, get min depth to the answer.
+
+### [111. Minimum Depth of Binary Tree]  
+
+比較所有的葉子節點，取最小的深度作為答案。
+
+**Recursion Solution:**
 ```go
 func minDepth(root *TreeNode) int {
 	if root == nil {
@@ -324,8 +369,12 @@ func Min(i, j int) int {
 	return i
 }
 ```
-[103. Binary Tree Zigzag Level Order Traversal]  
-Same logic to level order solution, but add a flag to control zigzag direction.
+
+### [103. Binary Tree Zigzag Level Order Traversal]  
+
+跟 Level order 一樣的邏輯，只是加入一個 Flag 來控制方向。
+
+**Iteration Solution:**
 ```go
 func zigzagLevelOrder(root *TreeNode) [][]int {
 	var result [][]int
@@ -367,6 +416,46 @@ func reverse(arr []int) {
 }
 ```
 
+---
+
+### [2583. Kth Largest Sum in a Binary Tree]
+
+看到題目就覺得要用 Level Order，這裡直接把每層的和加入到一個 Array 中，然後排序取 Kth 的值。
+
+**Iteration Solution:**
+-	這裡偷懶用 sort.Slice 來排序，應該可以用其他方法來加速
+```go
+func kthLargestLevelSum(root *TreeNode, k int) int64 {
+    sum := []int64{}
+    queue := []*TreeNode{root}
+    for len(queue) > 0 {
+        size := len(queue)
+        var temp int64 = 0
+        for i := 0; i < size; i++ {
+            cur := queue[i]
+            temp += int64(cur.Val)
+            if cur.Left != nil {
+                queue = append(queue, cur.Left)
+            }
+            if cur.Right != nil {
+                queue = append(queue, cur.Right)
+            }
+        }
+        sum = append(sum, temp)
+        queue = queue[size:]
+    }
+
+	sort.Slice(sum, func(i, j int) bool {
+		return sum[i] > sum[j]
+	})
+    
+    if k > len(sum) {
+        return -1
+    }
+    return sum[k-1]
+}
+```
+
 [reference]: https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md
 [102. Binary Tree Level Order Traversal]: https://leetcode.com/problems/binary-tree-level-order-traversal/
 [107. Binary Tree Level Order Traversal II]: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
@@ -379,3 +468,4 @@ func reverse(arr []int) {
 [104. Maximum Depth of Binary Tree]: https://leetcode.com/problems/maximum-depth-of-binary-tree/
 [111. Minimum Depth of Binary Tree]: https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
 [103. Binary Tree Zigzag Level Order Traversal]: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+[2583. Kth Largest Sum in a Binary Tree]: https://leetcode.com/problems/kth-largest-sum-in-a-binary-tree/
