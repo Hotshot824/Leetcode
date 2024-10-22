@@ -456,6 +456,43 @@ func kthLargestLevelSum(root *TreeNode, k int) int64 {
 }
 ```
 
+---
+
+### [1161. Maximum Level Sum of a Binary Tree]
+
+上一題 2583 的 Similar Problem，只是這裡要找到最大的 Level，所以更簡單了不斷更新最大值的 Level 即可。
+
+**Iteration Solution:**
+```go
+func maxLevelSum(root *TreeNode) int {
+    res, max, level := 1, root.Val, 1
+    queue := []*TreeNode{root}
+    for len(queue) > 0 {
+        size := len(queue)
+        temp := 0
+        for i := 0; i < size; i++ {
+            cur := queue[i]
+            temp += cur.Val
+            if cur.Left != nil {
+                queue = append(queue, cur.Left)
+            }
+            if cur.Right != nil {
+                queue = append(queue, cur.Right)
+            }
+        }
+
+        queue = queue[size:]
+
+        if temp > max {
+            max = temp
+            res = level
+        }
+        level++
+    }   
+    return res
+}
+```
+
 [reference]: https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md
 [102. Binary Tree Level Order Traversal]: https://leetcode.com/problems/binary-tree-level-order-traversal/
 [107. Binary Tree Level Order Traversal II]: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
@@ -469,3 +506,4 @@ func kthLargestLevelSum(root *TreeNode, k int) int64 {
 [111. Minimum Depth of Binary Tree]: https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
 [103. Binary Tree Zigzag Level Order Traversal]: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 [2583. Kth Largest Sum in a Binary Tree]: https://leetcode.com/problems/kth-largest-sum-in-a-binary-tree/
+[1161. Maximum Level Sum of a Binary Tree]: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
