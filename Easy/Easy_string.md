@@ -50,3 +50,29 @@ func wordPattern(pattern string, s string) bool {
 ```
 
 [290. Word Pattern]: https://leetcode.com/problems/word-pattern/description/
+
+### [2490. Circular Sentence]
+
+這裡用一個簡單的方式來解決這個問題，就是判斷第一個字元跟最後一個字元是否相同，如果不同就直接回傳 false，
+接著就是判斷每個 White Space 前後的字元是否相同，如果不同就回傳 false。
+
+Time Complexity O(n).
+
+**Solution:**
+```go
+func isCircularSentence(sentence string) bool {
+    size := len(sentence)
+    if sentence[0] != sentence[size-1] {
+        return false
+    }
+    for i, n := range sentence {
+        if n != ' ' {
+            continue
+        }
+        if sentence[i-1] != sentence[i+1] {
+            return false
+        }
+    }
+    return true
+}
+```
