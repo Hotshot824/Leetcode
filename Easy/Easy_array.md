@@ -215,3 +215,32 @@ public:
 ```
 
 [1460. Make Two Arrays Equal by Reversing Subarrays]: https://leetcode.com/problems/make-two-arrays-equal-by-reversing-sub-arrays/
+
+---
+
+### [2640. Find the Score of All Prefixes of an Array]
+
+這題先看 Score 的計算方法，Score[i] = Score[i-1] + max(nums[0], nums[1], ..., nums[i]) + nums[i]，
+其實就是每次加上前一個的 Score 然後跟把目前的數字加上 max(nums[0], nums[1], ..., nums[i])。
+
+-   應該很快能想到其實用兩個變數來紀律 Score[i-1] 和 max(nums[0], nums[1], ..., nums[i]) 即可
+-   每次操作就先更新 Max Prenumber 然後加上目前的數字，再加上前一次的 Score
+
+Time Complexity O(n), Space Complexity O(n).
+
+**Solution**
+```go
+func findPrefixScore(nums []int) []int64 {
+    res := make([]int64, len(nums))
+    var maxPre, sumPre int64 = int64(nums[0]), 0
+    for i := range nums {
+        maxPre = max(maxPre, int64(nums[i]))
+        cur := int64(nums[i]) + maxPre
+        sumPre += cur
+        res[i] = sumPre
+    }
+    return res
+}
+```
+
+[2640. Find the Score of All Prefixes of an Array]: https://leetcode.com/problems/find-the-score-of-all-prefixes-of-an-array/
