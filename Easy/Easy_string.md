@@ -76,3 +76,64 @@ func isCircularSentence(sentence string) bool {
     return true
 }
 ```
+
+[2490. Circular Sentence]: https://leetcode.com/problems/circular-sentence
+
+---
+
+### [2185. Counting Words With a Given Prefix]
+
+-   很簡單的做法，直接對每個字串做比對即可，如果有符合的就 Res++
+
+Time Complexity O(n), Space Complexity O(1).
+
+**Solution**
+```go
+func prefixCount(words []string, pref string) int {
+    res := 0
+    tar := len(pref)
+    for _, n := range words {
+        if len(n) >= tar && n[:tar] == pref {
+            res++
+        }
+    }
+    return res
+}
+```
+
+[2185. Counting Words With a Given Prefix]: https://leetcode.com/problems/counting-words-with-a-given-prefix
+
+---
+
+### [1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence]
+
+-   這題的解法就是對每個字串做比對，如果有符合的就回傳 index
+-   盡量不使用 Split 來處理，只使用 Index 來處理
+
+Time Complexity O(n), Space Complexity O(1).
+
+**Solution**
+```go
+func isPrefixOfWord(sentence string, searchWord string) int {
+    n := len(sentence)
+    tn := len(searchWord)
+    start, end := 0, 0
+    wordIndex := 1
+
+    for end <= n {
+        if end == n || sentence[end] == ' ' {
+            if end-start >= tn && sentence[start:start+tn] == searchWord { 
+                return wordIndex
+            }
+            wordIndex++
+            start = end + 1
+        }
+        end++
+    }
+
+    return -1
+}
+
+```
+
+[1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence]: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence
