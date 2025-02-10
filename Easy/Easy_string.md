@@ -120,3 +120,64 @@ func prefixCount(words []string, pref string) int {
 ```
 
 [2185. Counting Words With a Given Prefix]: https://leetcode.com/problems/counting-words-with-a-given-prefix/
+
+---
+
+### [3174. Clear Digits]
+
+這題是在一個 String 中如果遭遇 Digits 就要消除前一個字元，最後回傳消除後的字串。
+這個特性很類似於 Bracket 的消除，所以可以使用 Stack 來解決這個問題。
+
+加入一個 Stack，如果遇到 Digits 就 Pop，否則就 Push，最後把整個 Stack 轉換成字串回傳。
+
+Time Complexity O(n), Space Complexity O(n).
+
+**Golang Solution**
+```go
+func isDigit(r rune) bool {
+	return '0' <= r && r <= '9'
+}
+
+func clearDigits(s string) string {
+    stack := []rune{}
+    for _, r := range s {
+        if isDigit(r) {
+            stack = stack[:len(stack)-1]
+        } else {
+            stack = append(stack, r)
+        }
+    }
+    return string(stack)
+}
+```
+
+**Cpp Solution**
+```cpp
+class Solution {
+public:
+    std::string stack2str(std::stack<char> s) {
+        std::deque<char> temp;
+        while (!s.empty()) {
+            temp.push_front(s.top());
+            s.pop();
+        }
+        return std::string(temp.begin(), temp.end());
+    }
+
+    string clearDigits(string s) {
+        std::stack<char> stack;
+
+        for (auto c : s) {
+            if (c >= '0' && c <= '9') {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
+        }
+
+        return stack2str(stack);
+    }
+};
+```
+
+[3174. Clear Digits]: https://leetcode.com/problems/clear-digits/
