@@ -244,3 +244,42 @@ func findPrefixScore(nums []int) []int64 {
 ```
 
 [2640. Find the Score of All Prefixes of an Array]: https://leetcode.com/problems/find-the-score-of-all-prefixes-of-an-array/
+
+---
+
+### [2460. Apply Operations to an Array]
+
+[2460. Apply Operations to an Array]: https://leetcode.com/problems/apply-operations-to-an-array/
+
+這題真正的問題在怎麼把 0 移動到 Array 的尾部，最好可以再一次 Traversal 中就完成所有的操作，而不是計算完再去處理。
+1.  用一個相同大小的 `Array: Res` 來存放結果
+2.  用一個 Index :i 來遍歷原本的 Array
+    -   如果 nums[i] == 0 就跳過
+    -   如果 nums[i] == nums[i+1]，就把 Res[j] 更新為 nums[i]*2，然後 i++
+    -   否則就把 Res[j] 更新為 nums[i]
+3.  最後把 Res[j:] 的元素都設為 0
+
+Time Complexity O(n), Space Complexity O(n).
+
+**Golang Solution**
+```go
+func applyOperations(nums []int) []int {
+    res := make([]int, len(nums))
+    var j int = 0
+    for i := 0; i < len(nums); i++ {
+        if nums[i] == 0 {
+            continue
+        }
+
+        if i+1 < len(nums) && nums[i] == nums[i+1] {
+            res[j] = nums[i]*2
+            i++
+        } else {
+            res[j] = nums[i]
+        }
+
+        j++
+    }
+    return res
+}
+```
