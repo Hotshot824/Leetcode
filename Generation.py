@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# 簡單的 Master Guide 產生器（純 stdlib）
+# A simple script to generate a master outline markdown file for Leetcode problems
+# by scanning markdown files under Easy/Medium/Hard folders.
 import argparse, os, re, sys
 from pathlib import Path
 from collections import defaultdict
@@ -117,7 +118,9 @@ def main():
     p.add_argument('--root', default='.', help='repo root to scan (default: .)')
     p.add_argument('--output', default='1970-01-01-leetcode_guide.md', help='output markdown file')
     p.add_argument('--dry-run', action='store_true', help='only list matched files')
-    p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/main', help='optional GitHub repo prefix for links')
+    p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/main',
+                   help='optional GitHub repo prefix for links')
+    p.add_argument('--stdout', action='store_true', help='print output to stdout instead of file')
     args = p.parse_args()
 
     files = find_md_files(args.root)
@@ -129,8 +132,13 @@ def main():
 
     out = build_outline(files, repo_prefix=args.repo_prefix)
     content = render_master(out)
-    Path(args.output).write_text(content, encoding='utf-8')
-    print("Wrote", args.output)
+
+    # Output to file or stdout.
+    if args.stdout:
+        sys.stdout.write(content)
+    else:
+        Path(args.output).write_text(content, encoding='utf-8')
+        print("Wrote", args.output)
 
 if __name__ == '__main__':
     main()
