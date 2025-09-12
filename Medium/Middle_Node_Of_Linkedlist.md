@@ -1,3 +1,11 @@
+---
+Category: Linkedlist
+Subcategory: Linkedlist
+Title: Middle Node of Linkedlist
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Middle Node of Linkedlist
 
 找尋一個 Linkdelist 最快的方式是使用 fast and slow pointer，因為 fast 始終比 slow 快兩步，

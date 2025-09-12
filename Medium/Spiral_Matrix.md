@@ -1,3 +1,11 @@
+---
+Category: Array
+Subcategory: Spiral Matrix
+Title: Spiral Matrix
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Spiral Matrix
 
 ---

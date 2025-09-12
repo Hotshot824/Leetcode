@@ -1,3 +1,11 @@
+---
+Category: Dynamic Programming
+Subcategory: 0/1 Knapsack
+Title: 0/1 Knapsack Problem
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Knapsack Problem
 
 在這邊先介紹背包問題(Knapsack Problem) 的基本概念，對於 Knapsack problem 有很多種類型如:

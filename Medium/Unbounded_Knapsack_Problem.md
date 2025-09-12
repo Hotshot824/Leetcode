@@ -1,3 +1,11 @@
+---
+Category: Dynamic Programming
+Subcategory: Unbounded Knapsack Problem
+Title: Unbounded Knapsack Problem
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Unbounded Knapsack Problem
 
 Unbounded Knapsack Problem 是背包問題中的另一個問題，把 0/1 的物品數量改成一個物品可以選擇無限次數，問題描述如下:

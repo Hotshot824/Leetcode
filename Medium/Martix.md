@@ -1,3 +1,11 @@
+---
+Category: Array
+Subcategory: Matrix
+Title: Martix
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Martix
 
 大部分的 Martix 都是用 array 來表示的，處理的時候要注意觀察 Martix 的變化跟 Array 的特性。

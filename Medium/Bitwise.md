@@ -1,3 +1,12 @@
+---
+Category: Bit Manipulation
+Subcategory: Bit Manipulation
+Title: Bit Manipulation Summary
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
+
 ### [231. Power of Two]
 
 1.  如果一個數是 2 的次方數，那麼它的 Binary 只會有一個 1

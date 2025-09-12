@@ -1,3 +1,11 @@
+---
+Category: Binary Tree
+Subcategory: Binary Tree
+Title: Binary Tree Level Order Traversal
+Date: 2025-09-12
+Difficulty: Medium
+Status: Accepted
+---
 ### Binary Tree Level Order Traversal
 
 [Reference]  

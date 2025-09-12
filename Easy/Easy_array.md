@@ -1,3 +1,12 @@
+---
+Category: Array
+Subcategory: Easy Array
+Title: Easy Array
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
+
 ### Easy Array
 
 跟 Array 相關的題目，主要是要熟悉 Array 的操作，例如：新增、刪除、修改、查詢等等，到更進階的 two pointer、sliding window 等。

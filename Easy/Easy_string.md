@@ -1,3 +1,14 @@
+---
+Category: String
+Subcategory: String
+Title: Easy String
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
+
+### Easy String
+
 ### [205. Isomorphic Strings]
 
 判斷兩個 String pattern 是否相同，最簡單的方式就是建立兩個 Hash，分別記錄 i 上次出現的位置，

@@ -1,3 +1,11 @@
+---
+Category: Binary Tree
+Subcategory: Binary Tree
+Title: Build Binary Tree for Array
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
 ### Build Binary Tree for Array
 
 > Using Array to build a binary tree, to test leetocde problem.

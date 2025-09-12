@@ -1,3 +1,12 @@
+---
+Category: Binary Tree
+Subcategory: binary tree
+Title: N-ary Tree Traversal
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
+
 ### N-ary Tree Traversal
 
 Reference [Recursion Binary Tree Traversal] and [Iteration Binary Tree Traversal].  

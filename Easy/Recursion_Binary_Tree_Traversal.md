@@ -1,3 +1,12 @@
+---
+Category: Binary Tree
+Subcategory: binary tree
+Title: Recursion Binary traversal
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
+
 ### Recursion Binary traversal 
 
 Inorder, Preorder and Postorder, Using recursion. [reference]  

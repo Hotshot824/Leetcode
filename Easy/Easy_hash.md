@@ -1,3 +1,14 @@
+---
+Category: String
+Subcategory: String
+Title: Easy Hash
+Date: 2025-09-12
+Difficulty: Easy
+Status: Accepted
+---
+
+### Easy Hash
+
 ### [2215. Find the Difference of Two Arrays]
 
 最簡單的方法就是用 hash table 來記錄兩個 array 的元素，然後比較兩個 hash table 的差異即可。
