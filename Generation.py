@@ -117,7 +117,7 @@ def main():
     p.add_argument('--root', default='.', help='repo root to scan (default: .)')
     p.add_argument('--output', default='1970-01-01-leetcode_guide.md', help='output markdown file')
     p.add_argument('--dry-run', action='store_true', help='only list matched files')
-    p.add_argument('--repo-prefix', default='', help='optional GitHub repo prefix for links')
+    p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/main', help='optional GitHub repo prefix for links')
     args = p.parse_args()
 
     files = find_md_files(args.root)
@@ -127,7 +127,7 @@ def main():
         print("Total:", len(files))
         return
 
-    out = build_outline(files, repo_prefix=args.repo_prefix or None)
+    out = build_outline(files, repo_prefix=args.repo_prefix)
     content = render_master(out)
     Path(args.output).write_text(content, encoding='utf-8')
     print("Wrote", args.output)
