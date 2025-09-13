@@ -1,6 +1,6 @@
 ---
 Category: Binary Tree
-Subcategory: binary tree
+Subcategory: Binary tree
 Title: Recursion Binary traversal
 Date: 2025-09-12
 Difficulty: Easy

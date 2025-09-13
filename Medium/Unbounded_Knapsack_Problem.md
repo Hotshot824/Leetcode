@@ -1,6 +1,6 @@
 ---
 Category: Dynamic Programming
-Subcategory: Unbounded Knapsack Problem
+Subcategory: Unbounded Knapsack
 Title: Unbounded Knapsack Problem
 Date: 2025-09-12
 Difficulty: Medium
