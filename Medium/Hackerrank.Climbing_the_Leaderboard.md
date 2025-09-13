@@ -1,6 +1,6 @@
 ---
 Category: Array
-Subcategory: Matrix
+Subcategory: Binary Search
 Title: Hackerrank. Climbing the Leaderboard
 Date: 2025-09-13
 Difficulty: Medium
