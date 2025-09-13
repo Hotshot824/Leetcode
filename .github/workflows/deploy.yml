@@ -38,6 +38,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+<<<<<<< HEAD
           if ! git diff --quiet; then
             git add _posts/1970/1970-01-01-leetcode_guide.md
             git commit -m "Update Leetcode Guide from $(date +'%Y-%m-%d %H:%M:%S')."
@@ -45,3 +46,8 @@ jobs:
           else
             echo "No changes detected, skip commit & push"
           fi
+=======
+          git add _posts/1970/1970-01-01-leetcode_guide.md
+          git commit -m "Update Leetcode Guide from $(date +'%Y-%m-%d %H:%M:%S')."
+          git push origin publish
+>>>>>>> bc6399c (add: Forming a Magic Square.)
