@@ -1,15 +1,15 @@
 ---
 Category: Array
 Subcategory: Matrix
-Title: Forming a Magic Square
+Title: Hackerrank. Forming a Magic Square
 Date: 2025-09-13
 Difficulty: Medium
 Status: Accepted
 ---
 
-### [Forming a Magic Square]
+### [Hackerrank. Forming a Magic Square]
 
-[Forming a Magic Square]: https://www.hackerrank.com/challenges/magic-square-forming/problem
+[Hackerrank. Forming a Magic Square]: https://www.hackerrank.com/challenges/magic-square-forming/problem
 
 Hackerrank 的題目，給一個 3*3 矩陣，找出該矩陣變為 Magic Square 所需的最小 cost。
 -   Magic Square 的定義是每一行、每一列、兩條對角線的和都相等
