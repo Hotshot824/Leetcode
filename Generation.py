@@ -118,7 +118,7 @@ def main():
     p.add_argument('--root', default='.', help='repo root to scan (default: .)')
     p.add_argument('--output', default='1970-01-01-leetcode_guide.md', help='output markdown file')
     p.add_argument('--dry-run', action='store_true', help='only list matched files')
-    p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/main',
+    p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/publish',
                    help='optional GitHub repo prefix for links')
     p.add_argument('--stdout', action='store_true', help='print output to stdout instead of file')
     args = p.parse_args()
