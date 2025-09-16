@@ -7,14 +7,11 @@ layout: post
 tags: [leetcode, algorithm]
 ---
 
-> Notes leetcode problem 
+> 我的刷題筆記，主要用於記錄自己在刷題過程中遇到的問題與解法。
 {: .block-tip }
 
-> Reference: [leetcode-master], [Python-LeetCode 581], [灵茶山艾府: 如何科学刷题？]
+> Reference: [leetcode-master], [Python-LeetCode 581], [codeforces-go], [灵茶山艾府: 如何科学刷题？]
 {: .block-tip }
-
-> Reference: [codeforces-go], [灵茶山艾府: 如何科学刷题？]
-<{: .block-tip }
 
 > 以上參考從基礎的 Array 到 Dynamic Programming 都有詳細的解釋。
 
