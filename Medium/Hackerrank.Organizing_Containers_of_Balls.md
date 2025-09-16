@@ -68,3 +68,35 @@ func organizingContainers(container [][]int32) string {
     return "Possible"
 }
 ```
+
+**CPP Solution:**
+```cpp
+/*
+ * Complete the 'organizingContainers' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts 2D_INTEGER_ARRAY container as parameter.
+ */
+
+string organizingContainers(vector<vector<int>> container) {
+    std::vector<int> balls(container.size(), 0);
+    std::vector<int> container_size(container.size(), 0);
+    
+    for (int i = 0; i < container.size(); i++) {
+        for (int j = 0; j < container.size(); j++) {
+            balls[j] += container[i][j];
+            container_size[i] += container[i][j];
+        }
+    }
+    
+    sort(balls.begin(), balls.end());
+    sort(container_size.begin(), container_size.end());
+    
+    for (int i = 0; i < balls.size(); i++) {
+        if (balls[i] != container_size[i]) {
+            return "Impossible";
+        }
+    }
+    return "Possible";
+}
+```
