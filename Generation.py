@@ -75,30 +75,15 @@ def build_outline(files, repo_prefix=None):
             out[cat][sub].sort(key=lambda x: (x[0], x[1]))
     return out
 
-MASTER_HEADER = """---
-title: "Leetcode | Master Guide"
-author: Benson Hsu
-date: 1970-01-01
-category: Jekyll
-layout: post
-tags: [leetcode, algorithm]
----
-
-> Notes leetcode problem 
-{: .block-tip }
-
-> Reference: [leetcode-master], [Python-LeetCode 581] 從基礎的 Array 到 Dynamic Programming 都有詳細的解釋。
-{: .block-tip }
-
-[leetcode-master]: https://github.com/youngyangyang04/leetcode-master
-[Python-LeetCode 581]: https://hackmd.io/@bangyewu/ryLbEED23/%2FAXR8NqGRQj2MLo6oCY7DGQ
-
-"""
-
-def render_master(out):
+def render_master(out, header_text):
     # ensure Other is last
     cats = sorted([c for c in out.keys() if c != 'Other']) + (['Other'] if 'Other' in out else [])
-    lines = [MASTER_HEADER]
+    # Use provided header text (from file). If empty, still keep placeholder newline.
+    header = header_text.strip('\n')
+    if header:
+        lines = [header, ""]  # ensure a blank line after header block
+    else:
+        lines = []
     for cat in cats:
         lines.append(f"### {cat}\n")
         for sub in sorted(out[cat].keys(), key=lambda s: (s == '', s.lower())):
@@ -121,6 +106,7 @@ def main():
     p.add_argument('--repo-prefix', default='https://github.com/Hotshot824/Leetcode/blob/publish',
                    help='optional GitHub repo prefix for links')
     p.add_argument('--stdout', action='store_true', help='print output to stdout instead of file')
+    p.add_argument('--header-file', default='header.md', help='path to header markdown snippet (default: header.md)')
     args = p.parse_args()
 
     files = find_md_files(args.root)
@@ -131,7 +117,20 @@ def main():
         return
 
     out = build_outline(files, repo_prefix=args.repo_prefix)
-    content = render_master(out)
+
+    # Load header file content
+    header_path = Path(args.header_file)
+    try:
+        if header_path.is_file():
+            header_text = header_path.read_text(encoding='utf-8')
+        else:
+            print(f"[warn] header file not found: {header_path}", file=sys.stderr)
+            header_text = ''
+    except Exception as e:
+        print(f"[warn] failed reading header file {header_path}: {e}", file=sys.stderr)
+        header_text = ''
+
+    content = render_master(out, header_text)
 
     # Output to file or stdout.
     if args.stdout:
