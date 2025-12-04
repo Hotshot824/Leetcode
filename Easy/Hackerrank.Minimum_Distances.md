@@ -78,3 +78,32 @@ int minimumDistances(int a_count, int* a) {
     return res == INT_MAX ? -1 : res;
 }
 ```
+
+**Go Solution:**
+```go
+/*
+ * Complete the 'minimumDistances' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts INTEGER_ARRAY a as parameter.
+ */
+const INT32_MAX int32 = int32(^uint32(0)>>1)
+
+func minimumDistances(a []int32) int32 {
+    hash := map[int32]int32{}
+    
+    res := INT32_MAX
+
+    for i, v := range a {
+        if pos, ok := hash[v]; ok {
+            res = min(res, int32(i)-pos)
+        }
+        hash[v] = int32(i)
+    }
+    
+    if res == INT32_MAX {
+        return -1
+    }
+    return res
+}
+```
