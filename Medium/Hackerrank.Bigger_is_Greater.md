@@ -89,3 +89,39 @@ func biggerIsGreater(w string) string {
     return string(arr)
 }
 ```
+
+**C Solution:**
+```c
+char* biggerIsGreater(char* w) {
+    int n = strlen(w);
+    int i = n - 2;
+    
+    while(i >= 0 && w[i] >= w[i+1]) {
+        i--;
+    }
+    
+    if(i < 0) {
+        return "no answer";
+    }
+    
+    for (int j = n-1; j > i; j--) {
+        if (w[j] > w[i]) {
+            char tmp = w[i];
+            w[i] = w[j];
+            w[j] = tmp;
+            break;
+        }
+    }
+    
+    int left = i + 1, right = n - 1;
+    while(left < right) {
+        char tmp = w[left];
+        w[left] = w[right];
+        w[right] = tmp;
+        left++;
+        right--;
+    }
+    
+    return w;
+}
+```
