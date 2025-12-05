@@ -1,6 +1,6 @@
 ---
 Category: Array
-Subcategory: Array
+Subcategory: Easy Array
 Title: Hackerrank. Minimum Distances
 Date: 2025-12-04
 Difficulty: Easy
